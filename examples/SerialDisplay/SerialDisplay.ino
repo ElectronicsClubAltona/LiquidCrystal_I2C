@@ -5,14 +5,19 @@
   Compatible with the Arduino IDE 1.0
   Library version:1.1
 */
-#define clockFrequency 100000
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 //    Wire.setClock(clockFrequency);      not in this library
+
+
+
 LiquidCrystal_I2C lcd(0x27, 20, 4); // set the LCD address to 0x27 for a 16 chars and 2 line display
 
 void setup()
 {
+#define clockrate 100000
+  Wire.begin();
+  Wire.setClock(clockrate);  // force data rate to known value
   lcd.init();                      // initialize the lcd
   lcd.backlight();
   Serial.begin(9600);
