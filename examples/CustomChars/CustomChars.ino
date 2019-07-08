@@ -23,6 +23,9 @@ LiquidCrystal_I2C lcd(0x27, 20, 4); // set the LCD address to 0x27 for a 16 char
 
 void setup()
 {
+#define clockrate 100000
+  Wire.begin();
+  Wire.setClock(100000);  // force data rate to known value
   lcd.init();                      // initialize the lcd
   lcd.backlight();
 
@@ -42,7 +45,7 @@ void setup()
   lcd.printByte(6);
   lcd.print(" arduinos!");
   delay(5000);
-  displayKeyCodes();
+  //  displayKeyCodes();
 
 }
 
@@ -65,5 +68,5 @@ void displayKeyCodes(void) {
 
 void loop()
 {
-
+  displayKeyCodes();
 }
